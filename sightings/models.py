@@ -2,8 +2,8 @@ from django.db import models
 from django.utils.translation import gettext as _
 from django.utils import timezone
 class Squirrel(models.Model):
-    latitude = models.FloatField(help_text='Longitude')
-    longitude = models.FloatField(help_text='Latitude')
+    longitude = models.FloatField(help_text='Longitude')
+    latitude = models.FloatField(help_text='Latitude')
     unique_squirrel_id = models.CharField(help_text='Unique Squirrel ID',max_length = 255)
    # hectare = models.CharField(max_length = 255)
     PM = 'PM'
@@ -27,7 +27,7 @@ class Squirrel(models.Model):
             (juvenile, 'Juvenile'),
             (other, 'Other'),
             )
-    age = models.CharField(help_text='age',
+    age = models.CharField(help_text='Age',
             max_length = 255,
             choices = age_choices,
             default = other
