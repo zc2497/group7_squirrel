@@ -41,4 +41,8 @@ def add(request):
     else:
             return render(request,'sightings/add.html')
         #return redirect('sightings:index')
-    
+
+def details(request,unique_squirrel_id):
+    squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
+    context = {'squirrel':squirrel}
+    return render(request,'sightings/details.html',context)

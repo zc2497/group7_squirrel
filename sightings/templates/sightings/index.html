@@ -1,29 +1,29 @@
 <html>
     <head>
-        <title>This is the squirrels sightings report</title>
+        <title>Squirrel sightings Homepage</title>
     </head>
+
     <body>
 
 
-        <h1>squirrels sightings report</h1>
+        <h1>Squirrel sightings list</h1>
         <br>
 	<a href='{%url 'sightings:add'%}'>Add new squirrel sighting</a>
 
-        <h3>These are the ID list of all sightings {{sightings}} </h3>
-            {%if sightings%}
+        <h3>Unique_Squirrel_ID of all sightings </h3>
+            {%if Squirrel%}
                 <ul>
-                    {%for sighting in sightings%}
-                        <li>{{sighting}}</li>
-			<a href='/sightings/{{sighting.Unique_Squirrel_ID}}/'>See details about it and edit it!</a>
+                    {%for squirrel in Squirrel%}
+                        <li>{{squirrel}}</li>
+			<a href='/sightings/{{squirrel.unique_squirrel_id}}/'>See details and update or delete it </a>
 
 		    {%endfor%}
                 </ul>
             {% else %}
-                <p>There is no sightings at all</p>
+                <p>No sighting available, you can add some
+		 <a href='{%url 'sightings:add'%}'>Add new squirrel sighting</a>
+		</p>
             {%endif%}
-
-	    <br></br>
-	<h4> This page refers to  this part of the assignment: A view that lists all squirrel sightings with links to edit and add sightings</h4>
 
     </body>
 </html>
