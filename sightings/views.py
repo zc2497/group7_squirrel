@@ -1,46 +1,44 @@
 from django.shortcuts import render
-
+from django.http import HttpResponse
 from map.models import Squirrel
 # Create your views here.
 def index(request):
     #template = loader.get_template('map/index.html')
-    Squirrel_longitude = [longitude for longitude in Squirrel.objects.all()]
-    Squirrel_latitude = [latitude for latitude in Squirrel.objects.all()]
-    context = {'Squirrel_longitude':Squirrel_longitude,'Squirrel_latitude':Squirrel_latitude,}
-    return render(request,'sightings/index.html',context)
+    try:
+        context={'Squirrel':Squirrel.objects.all()[:50],}
+    except Squirrel.DoesNotExist:
+        raise Http404("Squirrel does not exist")
+    return render(request,"sightings/index.html",context)
 def add(request):
     if request.method=="POST":
-    #print("Add sightings to the databse")
-        unique_squirrel_id = request.POST.get('Unique_Squirrel_ID')
-        longitude = request.POST.get('Longitude')
-        latitude=request.POST.get('Latitude')
-        specific_location=request.POST.get('Specific_location')
-        date=request.POST.get('Date')
-        shift=request.POST.get('Shift')
-        age=request.POST.get('Age')
-        primary_fur_color=request.POST.get('Primary_fur_color')
-        location=request.POST.get('Location')
-        running=request.POST.get('Running')
-        chasing=request.POST.get('Chasing')
-        climbing=request.POST.get('Climbing')
-        eating=request.POST.get('Eating')
-        foraging=request.POST.get('Foraging')
-        other_activities=request.POST.get('Other_Activities')
-        kuks=request.POST.get('Kuks')
-        quaas=request.POST.get('Quaas')
-        moans=request.POST.get('Moans')
-        tail_flags=request.POST.get('Tail_flags')
-        tail_twitches=request.POST.get('Tail_twitches')
-        approaches=request.POST.get('Approaches')
-        indifferent=request.POST.get('Indifferent')
-
-        squirrel=squirrels.objects.create(unique_squirrel_id=unique_squirrel_id,
-                longitude=longitude,latitude=latitude,specific_location=specific_location,
-                date=date,shift=shift,age=age,primary_fur_color=primary_fur_color,
-                location=location,running=running,chasing=chasing,climbing=climbing,
-                eating=eating,foraging=foraging,other_activities=other_activities,
-                kuks=kuks,quaas=quaas,moans=moans,tail_flags=tail_flags,
-                tail_twitches=tail_twitches,approaches=approaches, indifferent=indifferent)
-        squirrel.save()
-        return redirect('sightings:index')
-    return render(request,'sightings/add.html')
+        if request.POST.get('latitude') and request.POST.get('longitude') and request.POST.get('unique_squirrel_id'):
+            squirrel=Squirrel()
+            squirrel.longitude=request.POST.get('longitude')
+            squirrel.latitude=request.POST.get('latitude')
+            squirrel.unique_squirrel_id=request.POST.get('unique_squirrel_id')
+            squirrel.shift=request.POST.get('shift')
+            squirrel.date=request.POST.get('date')
+            squirrel.age=request.POST.get('age')
+            squirrel.primary_fur_color=request.POST.get('primary_fur_color')
+            squirrel.location=request.POST.get('location')
+            squirrel.specific_location=request.POST.get('specific_location')
+            squirrel.running=request.POST.get('running')
+            squirrel.chasing=request.POST.get('chasing')
+            squirrel.climbing=request.POST.get('climbing')
+            squirrel.eating=request.POST.get('eating')
+            squirrel.foraging=request.POST.get('foraging')
+            squirrel.other_activities=request.POST.get('other_activities')
+            squirrel.kuks=request.POST.get('kuks')
+            squirrel.quaas=request.POST.get('quaas')
+            squirrel.moans=request.POST.get('moans')
+            squirrel.tail_flags=request.POST.get('tail_flags')
+            squirrel.tail_twitches=request.POST.get('tail_twitches')
+            squirrel.approaches=request.POST.get('approaches')
+            squirrel.indifferent=request.POST.get('indifferent')
+            squirrel.runs_from=request.POST.get('runs_from')
+            squirrel.save()
+            return render(request,'sightings/index.html')
+    else:
+            return render(request,'sightings/add.html')
+        #return redirect('sightings:index')
+    
