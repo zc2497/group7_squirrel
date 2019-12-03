@@ -15,7 +15,7 @@ class Squirrel(models.Model):
     shift = models.CharField(help_text='Shift',
             max_length=255,
             choices=shift_choices,
-            default=AM
+            default=AM,
             )
     date = models.DateField(help_text ='Date',max_length=255)
    # hectare_squirrel_number = models.IntegerField()

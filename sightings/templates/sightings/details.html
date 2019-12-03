@@ -29,7 +29,7 @@
 			<li>Indifferent: {{ squirrel.indifferent }}</li>
 			<li>Runs From: {{ squirrel.runs_from }}</li>
 		</ul>
-	
+	        <a href="{% url 'sightings:update' unique_squirrel_id=squirrel.unique_squirrel_id%}">Update info</a><br>
 		<a href="{% url 'sightings:index'%}"> Go to main page</a>
 
 	</body>

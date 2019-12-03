@@ -46,3 +46,33 @@ def details(request,unique_squirrel_id):
     squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
     context = {'squirrel':squirrel}
     return render(request,'sightings/details.html',context)
+
+def update(request,unique_squirrel_id):
+    squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
+    if request.method=="POST":
+            squirrel.longitude=request.POST['longitude']
+            squirrel.latitude=request.POST['latitude']
+            squirrel.shift=request.POST['shift']
+            squirrel.date=request.POST['date']
+            squirrel.age=request.POST['age']
+            squirrel.primary_fur_color=request.POST['primary_fur_color']
+            squirrel.location=request.POST['location']
+            squirrel.specific_location=request.POST['specific_location']
+            squirrel.running=request.POST['running']
+            squirrel.chasing=request.POST['chasing']
+            squirrel.climbing=request.POST['climbing']
+            squirrel.eating=request.POST['eating']
+            squirrel.foraging=request.POST['foraging']
+            squirrel.other_activities=request.POST['other_activities']
+            squirrel.kuks=request.POST['kuks']
+            squirrel.quaas=request.POST['quaas']
+            squirrel.moans=request.POST['moans']
+            squirrel.tail_flags=request.POST['tail_flags']
+            squirrel.tail_twitches=request.POST['tail_twitches']
+            squirrel.approaches=request.POST['approaches']
+            squirrel.indifferent=request.POST['indifferent']
+            squirrel.runs_from=request.POST['runs_from']
+            context={'squirrel':squirrel}
+            return render(request,'sightings/details.html',context)
+    context={'squirrel':squirrel}
+    return render(request,'sightings/update.html',context)
