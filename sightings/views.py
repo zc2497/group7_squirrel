@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from map.models import Squirrel
 # Create your views here.
@@ -37,7 +37,8 @@ def add(request):
             squirrel.indifferent=request.POST.get('indifferent')
             squirrel.runs_from=request.POST.get('runs_from')
             squirrel.save()
-            return render(request,'sightings/index.html')
+            context={'Squirrel':Squirrel.objects.all()[:50],}
+            return render(request,'sightings/index.html',context)
     else:
             return render(request,'sightings/add.html')
         #return redirect('sightings:index')
@@ -72,7 +73,17 @@ def update(request,unique_squirrel_id):
             squirrel.approaches=request.POST['approaches']
             squirrel.indifferent=request.POST['indifferent']
             squirrel.runs_from=request.POST['runs_from']
+            squirrel.save()
             context={'squirrel':squirrel}
             return render(request,'sightings/details.html',context)
     context={'squirrel':squirrel}
     return render(request,'sightings/update.html',context)
+def delete(request,unique_squirrel_id):
+    squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id) 
+    if request.method =="POST":
+        #squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
+        squirrel.delete()
+        #context={'Squirrel':Squirrel.objects.all()[:50],}
+        return redirect('sightings:index')
+    
+    return render(request,'sightings/delete.html')
