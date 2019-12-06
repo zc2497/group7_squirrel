@@ -9,7 +9,10 @@
         <h1>Squirrel sightings list</h1>
         <br>
 	<a href='{%url 'sightings:add'%}'>Add new squirrel sighting</a>
-
+	<br>
+        <a href='{%url 'sightings:map'%}'>Show squirrels in leafletJS map</a>
+	<br>
+	<a href='{%url 'sightings:stats'%}'>Show some stats of squirrels</a>
         <h3>Unique_Squirrel_ID of all sightings </h3>
             {%if Squirrel%}
                 <ul>

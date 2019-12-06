@@ -1,0 +1,24 @@
+<!Doctype>
+<html>
+	<head>
+		<title>Stats of squirrel csv file
+		</title>
+	</head>
+	<body>
+		<ul>
+			<li>The total number of rows in our data is:{{calc}}
+			</li>
+			<li>The number of squirrels which are adults:{{calc1}}
+			</li>
+                        <li>The number of squirrels which are in location 'ground plane':{{calc2}}
+			</li>
+			<li>The number of squirrels which moans:{{calc3}}
+		        </li>
+			<li>The number of squirrels which are not eating:{{calc4}}
+			</li>
+			<li>The average latitude number of all squirrels:{{calc5}}
+			</li>
+		</ul>
+		<a href="{% url 'sightings:index'%}"> Go to main page</a>
+	</body>
+</html>

@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Squirrel
 from .forms import SquirrelForm
+from django.db.models import Avg
 # Create your views here.
 def index(request):
     #template = loader.get_template('map/index.html')
@@ -10,6 +11,19 @@ def index(request):
     except Squirrel.DoesNotExist:
         raise Http404("Squirrel does not exist")
     return render(request,"sightings/index.html",context)
+def map(request):
+    context={'Squirrel':Squirrel.objects.all()[:50],}
+    return render(request,"sightings/map.html",context)
+    
+def stats(request):
+    calc=Squirrel.objects.all().count()
+    calc1=Squirrel.objects.filter(age='Adult').count()
+    calc2=Squirrel.objects.filter(location='Ground Plane').count()
+    calc3=Squirrel.objects.filter(moans=True).count()
+    calc4=Squirrel.objects.filter(eating=False).count()
+    calc5=Squirrel.objects.all().aggregate(Avg('latitude'))
+    context={'calc':calc,'calc1':calc1,'calc2':calc2,'calc3':calc3,'calc4':calc4,'calc5':calc5,}
+    return render(request,"sightings/stats.html",context)
 #def add(request):
 #    if request.method=="POST":
 #        if request.POST.get('latitude') and request.POST.get('longitude') and request.POST.get('unique_squirrel_id'):
