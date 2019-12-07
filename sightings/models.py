@@ -21,40 +21,38 @@ class Squirrel(models.Model):
    # hectare_squirrel_number = models.IntegerField()
     adult = 'Adult'
     juvenile = 'Juvenile'
-    other = 'Other'
+    #other = 'Other'
     age_choices = (
             (adult, 'Adult'),
             (juvenile, 'Juvenile'),
-            (other, 'Other'),
+            #(other, 'Other'),
             )
     age = models.CharField(help_text='Age',
             max_length = 255,
             choices = age_choices,
-            default = other
+            default = adult
             )
-    gray,cinnamon,black,other='gray','cinnamon','black','other'
-    primary_fur_color_choices=((gray,'Gray'),(cinnamon,'Cinnamon'),(black,'Black'),(other,'Other'))
+    gray,cinnamon,black='gray','cinnamon','black'
+    primary_fur_color_choices=((gray,'Gray'),(cinnamon,'Cinnamon'),(black,'Black'))
     primary_fur_color = models.CharField(help_text='Primary Fur Color',
             max_length = 255,
             choices = primary_fur_color_choices,
-            default = other,
+            default = gray,
             )
     #highlight_fur_color = models.CharField(max_length = 255)
     #combination_of_primary_and_highlight_color = models.CharField(max_length = 255)
     #color_notes = models.TextField()
     above_ground='Above Ground'
     ground_plane = 'Ground Plane'
-    other = 'Other'
     location_choices = (
             (above_ground, 'Above Ground'),
             (ground_plane, 'Ground Plane'),
-            (other, 'Other'),
             )
     location = models.CharField(
             help_text ='Location',
             max_length = 255,
             choices = location_choices,
-            default = other
+            default = above_ground
             )
     #above_ground_sighter_measurement = models.CharField(max_length = 255)
     specific_location = models.CharField(help_text='Specific Location',max_length = 255)

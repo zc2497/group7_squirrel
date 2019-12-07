@@ -7,12 +7,12 @@ from django.db.models import Avg
 def index(request):
     #template = loader.get_template('map/index.html')
     try:
-        context={'Squirrel':Squirrel.objects.all()[:50],}
+        context={'Squirrel':Squirrel.objects.all()[:100],}
     except Squirrel.DoesNotExist:
         raise Http404("Squirrel does not exist")
     return render(request,"sightings/index.html",context)
 def map(request):
-    context={'Squirrel':Squirrel.objects.all()[:50],}
+    context={'Squirrel':Squirrel.objects.all()[:100],}
     return render(request,"sightings/map.html",context)
     
 def stats(request):
