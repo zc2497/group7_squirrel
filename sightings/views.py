@@ -7,7 +7,7 @@ from django.db.models import Avg
 def index(request):
     #template = loader.get_template('map/index.html')
     try:
-        context={'Squirrel':Squirrel.objects.all()[:100],}
+        context={'Squirrel':Squirrel.objects.all(),}
     except Squirrel.DoesNotExist:
         raise Http404("Squirrel does not exist")
     return render(request,"sightings/index.html",context)
