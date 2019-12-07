@@ -10,6 +10,6 @@
 <h2>UNIs: [zc2497, rj2578]
 </h2>
 <br>
-<h2>The link to the server running our application:<a href='https://instance1-255500.appspot.com/'>Click here to see the app</a>
+<h2>The link to the server running our application:<a href='https://instance1-255500.appspot.com/'>https://instance1-255500.appspot.com/</a>
 </h2>
 </table>

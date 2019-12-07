@@ -1,3 +1,8 @@
 *.pyc
-__pycache__
+group7_squirrel/__pycache__/
+sightings/__pycache__/
+sightings/management/commands/__pycache__/
+sightings/migrations/_pycache__/
+
+
 
