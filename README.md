@@ -5,7 +5,7 @@
 <h2>Project description
 </h2>
 <p>We built a web application to keep track of all squirrels of Central Park. Users are allowed to add, update and view squirrel data.</p>
-<p>We import 2018 Central Park Squirrel Census data from <a href='https://data.cityofnewyork.us/api/views/vfnx-vebw/rows.csv'>here</a> as squirreldata.csv file. We also export the squirrel data as export.csv file in our github repository. After making some changes, if you want to export again, you can run this command "python manage.py export<u>_</u>squirrel<u>_</u>data /path/to/file.csv". In addition, you can also import this export.csv file again.</p>
+<p>We import 2018 Central Park Squirrel Census data from <a href='https://data.cityofnewyork.us/api/views/vfnx-vebw/rows.csv'>here</a> as squirreldata.csv file. We also export the squirrel data as export.csv file in our github repository. After making some changes, if you want to export again, you can run this command "python manage.py export<u>_</u>squirrel<u>_</u>data export.csv". In addition, you can also import this export.csv file again.</p>
 <br>
 <h3>Detail description</h3>
 <br>
