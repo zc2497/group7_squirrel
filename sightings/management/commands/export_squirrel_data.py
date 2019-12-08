@@ -1,4 +1,5 @@
 import csv
+import datetime
 from django.core.management.base import BaseCommand
 from sightings.models import Squirrel
 class Command(BaseCommand):
@@ -9,32 +10,32 @@ class Command(BaseCommand):
         squirrel  = {}
         squirrels = Squirrel.objects.all()
         with open(options['csv_file'],"w") as fp:
-            fieldnames = ['x','y','unique_squirrel_id','shift','date','age','primary_fur_color','location','specific_location','running','chasing','climbing','eating','foraging','other_activities','kuks','quaas','moans','tail_flags','tail_twitches','approaches','indifferent','runs_from']
+            fieldnames = ['X','Y','Unique Squirrel ID','Shift','Date','Age','Primary Fur Color','Location','Specific Location','Running','Chasing','Climbing','Eating','Foraging','Other Activities','Kuks','Quaas','Moans','Tail flags','Tail twitches','Approaches','Indifferent','Runs from']
             writer = csv.DictWriter(fp,delimiter = ',',fieldnames=fieldnames)
             writer.writeheader()
             for item in squirrels:
                 writer.writerow({
-                    'x':item.longitude,
-                    'y' :item.latitude,
-                    'unique_squirrel_id':item.unique_squirrel_id,
-                    'shift':item.shift,
-                    'date':item.date,#['date'][4:]+'-'+item['date'][:2]+'-'+item['date'][2:4],
-                    'age':item.age,
-                    'primary_fur_color':item.primary_fur_color,
-                    'location':item.location,
-                    'specific_location':item.specific_location,
-                    'running':item.running,
-                    'chasing':item.chasing,
-                    'climbing':item.climbing,
-                    'eating':item.eating,
-                    'foraging':item.foraging,
-                    'other_activities':item.other_activities,
-                    'kuks':item.kuks,
-                    'quaas':item.quaas,
-                    'moans':item.moans,
-                    'tail_flags':item.tail_flags,
-                    'tail_twitches':item.tail_twitches,
-                    'approaches':item.approaches,
-                    'indifferent':item.indifferent,
-                    'runs_from':item.runs_from,
+                    'X':item.longitude,
+                    'Y' :item.latitude,
+                    'Unique Squirrel ID':item.unique_squirrel_id,
+                    'Shift':item.shift,
+                    'Date':datetime.datetime.strptime(str(item.date),'%Y-%m-%d').strftime('%m%d%Y'),#['date'][4:]+'-'+item['date'][:2]+'-'+item['date'][2:4],
+                    'Age':item.age,
+                    'Primary Fur Color':item.primary_fur_color,
+                    'Location':item.location,
+                    'Specific Location':item.specific_location,
+                    'Running':item.running,
+                    'Chasing':item.chasing,
+                    'Climbing':item.climbing,
+                    'Eating':item.eating,
+                    'Foraging':item.foraging,
+                    'Other Activities':item.other_activities,
+                    'Kuks':item.kuks,
+                    'Quaas':item.quaas,
+                    'Moans':item.moans,
+                    'Tail flags':item.tail_flags,
+                    'Tail twitches':item.tail_twitches,
+                    'Approaches':item.approaches,
+                    'Indifferent':item.indifferent,
+                    'Runs from':item.runs_from,
                 })
