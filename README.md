@@ -21,11 +21,11 @@
 <p>Stats page"/sightings/stats", you can see some stats about the squirrels with the attributes we chose.
 </p>
 <br>
-<p>Update page"/sightings/<unique-squirrel-id>/update", you can update any information about this particular squirrel, and when you update successfully, you will be redirected to this squirrel's detail page; if you don't want to update anymore, there is a link next to submit
+<p>Update page"/sightings/&lt;unique-squirrel-id&gt;/update", you can update any information about this particular squirrel, and when you update successfully, you will be redirected to this squirrel's detail page; if you don't want to update anymore, there is a link next to submit
  button for you to go directly back to main page. 
 </p>
 <br>
-<p>Delete page"/sightings/<unique-squirrel-id>/delete", if you are sure you want to delete this squirrel, you can delete it here, after you delete successfully, you will be redirected to the main page, if you don't want to update anymore, there is a link next to delete button for you to go directly back to main page.
+<p>Delete page"/sightings/&lt;unique-squirrel-id&gt;/delete", if you are sure you want to delete this squirrel, you can delete it here, after you delete successfully, you will be redirected to the main page, if you don't want to update anymore, there is a link next to delete button for you to go directly back to main page.
 </p>
 <br>
 <h2>Group name and section: Project Group 7, Section 2
